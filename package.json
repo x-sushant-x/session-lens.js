@@ -1,0 +1,14 @@
+{
+  "name": "session-lens",
+  "version": "1.0.0",
+  "description": "Open-Source web session recorder.",
+  "main": "app.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sushant",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}
