@@ -55,20 +55,11 @@ document.addEventListener('keydown', (e: KeyboardEvent) => {
     }
 })
 
-const observer = new MutationObserver((records, observer) => {
-    for (const record of records) {
-        for (const addedNode of record.addedNodes) {
-            log.textContent = `Added: ${addedNode.textContent}\n${log.textContent}`;
-        }
-        for (const removedNode of record.removedNodes) {
-            log.textContent = `Removed: ${removedNode.textContent}\n${log.textContent}`;
-        }
-        if (record.target.childNodes.length === 0) {
-            log.textContent = `Disconnected\n${log.textContent}`;
-            observer.disconnect();
-        }
-        console.log(record.target.childNodes.length);
-    }
+const observer = new MutationObserver((records) => {
+    console.log('DOM Changed')
+
+    const snapshot = document.documentElement.outerHTML;
+    console.log("Snapshot: " + snapshot)
 })
 
 observer.observe(container, {

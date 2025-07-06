@@ -45,31 +45,12 @@ document.addEventListener('keydown', (e) => {
         container.append(newItem);
     }
 });
-const observer = new MutationObserver((records, observer) => {
-    for (const record of records) {
-        switch (record.type) {
-            case "childList":
-                for (const addedNode of record.addedNodes) {
-                    console.log("Node added:", addedNode);
-                    log.textContent = `Node added: ${addedNode.nodeName}\n${log.textContent}`;
-                }
-                for (const removedNode of record.removedNodes) {
-                    console.log("Node removed:", removedNode);
-                    log.textContent = `Node removed: ${removedNode.nodeName}\n${log.textContent}`;
-                }
-                break;
-            case "attributes":
-                console.log(`Attribute changed: ${record.attributeName} on`, record.target);
-                log.textContent = `Attribute changed: ${record.attributeName}\n${log.textContent}`;
-                break;
-            case "characterData":
-                console.log("Character data changed in", record.target);
-                log.textContent = `Text changed: ${record.target.textContent}\n${log.textContent}`;
-                break;
-        }
-    }
+const observer = new MutationObserver((records) => {
+    console.log('DOM Changed');
+    const snapshot = document.documentElement.outerHTML;
+    console.log("Snapshot: " + snapshot);
 });
-observer.observe(document.documentElement, {
+observer.observe(container, {
     childList: true,
     subtree: true,
     characterData: true,
