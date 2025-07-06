@@ -1,0 +1,10 @@
+#container,
+#log {
+    height: 550px;
+    overflow: scroll;
+}
+
+#container li {
+    background-color: paleturquoise;
+    margin: 0.5rem;
+}
